@@ -1,0 +1,23 @@
+{
+  "name": "nodejs_and_mysql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bamazon_customer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignaciuk/Nodejs_and_MySQL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ignaciuk/Nodejs_and_MySQL/issues"
+  },
+  "homepage": "https://github.com/ignaciuk/Nodejs_and_MySQL#readme",
+  "dependencies": {
+    "inquirer": "^6.2.2",
+    "mysql": "^2.16.0"
+  }
+}

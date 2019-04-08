@@ -1,17 +1,16 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
+var divider = "\n**********\n";
+
 // create the connection information for the sql database
 var connection = mysql.createConnection({
   host: "localhost",
 
-  // Your port; if not 3306
   port: 8889,
 
-  // Your username
   user: "root",
 
-  // Your password
   password: "root",
   database: "bamazon_DB"
 });
@@ -27,9 +26,11 @@ function start() {
   function showItems(questions) {
     connection.query("SELECT * FROM products", function(err, results) {
       if (err) throw err;
+      console.log(`${divider}`);
       for (var i = 0; i < results.length; i++) {
-        console.log(results[i].item_id + " ... " + results[i].product_name + " ... " + "$" + results[i].price);
+        console.log(`${results[i].item_id} ... ${results[i].product_name} ... $${results[i].price}`);
       }
+      console.log(`${divider}`);
     questions();
     // connection.end();
     });
@@ -50,11 +51,7 @@ function start() {
             message: "How many would to like to purchase?"
           }
         ])
-        .then(function(answer) {
-          // console.log(answer.item_choice);
-          // console.log(answer.item_quantity);
-          // console.log("Random result: " + results[3].item_id);
-          
+        .then(function(answer) {   
             var chosenItem;
             // console.log("results length 1: " + results.length);
             for (var i = 0; i < results.length; i++) {
@@ -69,7 +66,7 @@ function start() {
             }
       
             if (chosenItem.stock_quantity < parseInt(answer.item_quantity)) {
-              console.log("Sorry, we don't have enough stock to satisfy your order");
+              console.log(`${divider} Sorry, we don't have enough stock to satisfy your order ${divider}`);
             } else {
 
               var newQuantity = chosenItem.stock_quantity - parseInt(answer.item_quantity);
@@ -94,7 +91,7 @@ function start() {
               // connection.end();
 
               var customerBalance = chosenItem.price * parseInt(answer.item_quantity);
-              console.log("Congrats, your order is on the way! You owe: $" + customerBalance);
+              console.log(`${divider} Congrats, your order is on the way! You owe: $${customerBalance} ${divider}`);
               // start();
 
             }

@@ -93,7 +93,7 @@ function addToInventory () {
             {
                 name: "amountToAdd",
                 type: "input",
-                message: "Enter the quanitity to add to item's inventory",
+                message: "Enter the quantity to add to item's inventory",
             }
         ]).then(function(response) { 
             for (var i = 0; i < results.length; i++) {
@@ -147,7 +147,7 @@ function addNewProduct() {
       {
         name: "stockQuantity",
         type: "input",
-        message: "How much of this product is curently in stock?",
+        message: "How much of this product is currently in stock?",
         validate: function(value) {
           if (isNaN(value) === false) {
             return true;
